@@ -1,1 +1,5 @@
 # ShareBigPack
+
+Aplikacja
+
+## cele
