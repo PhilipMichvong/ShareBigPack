@@ -4,6 +4,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sharebigpack2/advertisementPage.dart';
 import 'package:sharebigpack2/botom_bar.dart';
+import 'package:sharebigpack2/screens/ListOfADV.dart';
+
+import '../ADVinfo.dart';
 
 class advForm extends StatefulWidget {
   const advForm({super.key});
@@ -20,6 +23,24 @@ class _advFormState extends State<advForm> {
   final DropDownitems = ['test1', 'test2', 'test3', 'test4'];
   String? selectedVal = "";
   String? _value1 = "";
+  final _TextContolerTitle = TextEditingController();
+  final _TextContolerLocation = TextEditingController();
+  final _TextContolerShopName = TextEditingController();
+  final _TextContolerDescription = TextEditingController();
+  String _NAME = "maciek12";
+  final ListOfADV = ADVinfo.ADV_list();
+  void AddADV() {
+    ListOfADV.add(ADVinfo(
+        title: _TextContolerTitle.text,
+        User: _NAME,
+        Location: _TextContolerLocation.text,
+        shop: _TextContolerShopName.text));
+    print(_TextContolerTitle);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ListOFADV()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +84,7 @@ class _advFormState extends State<advForm> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 9),
                   child: TextField(
+                    controller: _TextContolerTitle,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Tytul ogloszenia",
@@ -86,6 +108,7 @@ class _advFormState extends State<advForm> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 9),
                   child: TextField(
+                    controller: _TextContolerDescription,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Jakie produkty chcesz podzelić?",
@@ -108,6 +131,7 @@ class _advFormState extends State<advForm> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 9),
                   child: TextField(
+                    controller: _TextContolerLocation,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Gdzie znajduje sie sklep?",
@@ -130,6 +154,7 @@ class _advFormState extends State<advForm> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 9),
                   child: TextField(
+                    controller: _TextContolerShopName,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Nazwa sklepu",
@@ -157,6 +182,7 @@ class _advFormState extends State<advForm> {
               children: [
                 // dodanie ogloszenia
                 GestureDetector(
+                  onTap: AddADV,
                   child: Container(
                     height: 75,
                     width: 75,

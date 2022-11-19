@@ -6,6 +6,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sharebigpack2/AdvAdd.dart';
+import 'package:sharebigpack2/screens/ListOfADV.dart';
+import 'package:sharebigpack2/screens/TypeOfADV.dart';
 import 'package:sharebigpack2/screens/advForm.dart';
 
 class AdvPage extends StatefulWidget {
@@ -19,7 +21,14 @@ class _AdvPageState extends State<AdvPage> {
   void _advForm() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const advForm()),
+      MaterialPageRoute(builder: (context) => const TypeOf()),
+    );
+  }
+
+  void _adv_list() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ListOFADV()),
     );
   }
 
@@ -73,7 +82,11 @@ class _AdvPageState extends State<AdvPage> {
                         child: Container(
                           width: 50,
                           height: 50,
-                          child: Icon(Icons.search, color: Colors.white),
+                          child: Icon(
+                            Icons.account_box,
+                            color: Colors.white,
+                            size: 30,
+                          ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color: Color.fromARGB(255, 35, 216, 171),
@@ -97,10 +110,11 @@ class _AdvPageState extends State<AdvPage> {
                 SizedBox(
                   height: 30,
                 ),
+                // dodawanie ogloszenia
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Container(
-                    height: 80,
+                    height: 60,
                     width: 300,
                     decoration: BoxDecoration(
                       color: Color.fromARGB(255, 35, 216, 171),
@@ -128,12 +142,53 @@ class _AdvPageState extends State<AdvPage> {
                               fontSize: 18,
                               //fontWeight: FontWeight.bold
                             ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                // przegladaj ogloszenia
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Container(
+                    height: 60,
+                    width: 300,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 238, 204, 10),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: GestureDetector(
+                      onTap: _adv_list,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(
+                            Icons.list,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          Container(
+                            width: 2,
+                            height: 30,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Przegladaj ogloszenia:",
+                            style: GoogleFonts.secularOne(
+                              color: Colors.white,
+                              fontSize: 18,
+                              //fontWeight: FontWeight.bold
+                            ),
                           )
                         ],
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

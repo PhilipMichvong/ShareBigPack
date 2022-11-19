@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
       home: AnimatedSplashScreen(
         splash: Image.asset(
           'assets/logo.png',
-          height: 400,
-          width: 400,
+          height: 800,
+          width: 800,
         ),
         splashTransition: SplashTransition.fadeTransition,
         nextScreen: Home_Page(),
