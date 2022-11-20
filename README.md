@@ -41,10 +41,10 @@ Manual:
 We use in our aplication
 we conncet aplication wroten in flutter with Python API
 In API we implement future features to further development:
-Reading from recipe picture
-Finding nearest store to your location
-AI that's calculate predicted time of rotten of fruits and vegatables
-All of above can be found in APIFeatures.py
+- Reading from recipe picture
+- Finding nearest store to your location
+- AI that's calculate predicted time of rotten of fruits and vegatables
+- All of above can be found in APIFeatures.py
 
 
 > [^event]: Event
