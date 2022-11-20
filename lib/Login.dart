@@ -7,6 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sharebigpack2/Register.dart';
 import 'package:sharebigpack2/advertisementPage.dart';
 import 'package:sharebigpack2/botom_bar.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 
 class Home_Page extends StatefulWidget {
   const Home_Page({super.key});
@@ -27,6 +30,24 @@ class _Home_PageState extends State<Home_Page> {
       MaterialPageRoute(builder: (context) => const Register()),
     );
   }
+
+  Future<void> login() async{
+    Map<String, String> headers = {'Content-Type':'application/json', 'Accept':'/'};
+    final msg = jsonEncode({"login":_TextContolerLogin.text, "password":_TextContolerPaswd.text});
+    if(_TextContolerLogin.text.isNotEmpty && _TextContolerPaswd.text.isNotEmpty){
+      var response = await http.post(Uri.parse("http://127.0.0.1:50666/login"),
+      headers:headers,
+      body:msg
+      );
+      if(response.statusCode == 200){
+        Post_page();
+      }else{
+        print("Złe dane logowania.");
+      }
+    }else{
+      print("Wypelnij obydwa pola!");
+    }
+}
 
   void Post_page() {
     Navigator.push(
